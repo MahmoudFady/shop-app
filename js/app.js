@@ -1,6 +1,6 @@
 import { Product } from "./modules/product/product.js";
 import { ProductTemplate } from "./modules/product/product-template.js";
-import { navbarActions, searchInput } from "./modules/navbar/navbar.js";
+import { navbarActions } from "./modules/navbar/navbar.js";
 import { NavbarTemplate } from "./modules/navbar/navbar-template.js";
 import { AuthTemplate } from "./modules/auth/auth-template.js";
 import {
@@ -85,9 +85,9 @@ Product.getAll()
   });
 const authNavs = document.querySelectorAll("#navbar ul.auth li");
 for (let i = 0; i < authNavs.length; i++) {
-  authNavs[i].onclick = function () {
+  authNavs[i].onclick = async function () {
     const target = this.getAttribute("data-target");
-    const template = AuthTemplate.getAuthTemplate(target);
+    const template = await AuthTemplate.getAuthTemplate(target);
     productsHook.innerHTML = "";
     authHook.innerHTML = template;
     syncEmailValidation();
@@ -148,6 +148,23 @@ for (let i = 0; i < authNavs.length; i++) {
           errorAlertEle.classList.add("is-error");
         }
       };
+    }
+    if (target == "cart") {
+      console.log("cart");
+      const delCartBtns = document.querySelectorAll(
+        "#cart-hook button.del-cart-btn"
+      );
+      for (let i = 0; i < delCartBtns.length; i++) {
+        delCartBtns[i].onclick = async function () {
+          const conf = window.confirm("delete prodct form cart ");
+          if (!conf) {
+            return;
+          }
+          const id = this.getAttribute("id");
+          Cart.deleteProduct(id);
+          this.parentElement.parentElement.parentElement.style.display = "none";
+        };
+      }
     }
   };
 }

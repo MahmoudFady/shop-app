@@ -1,3 +1,5 @@
+import { CartTemplate } from "../cart/cart-template.js";
+
 export class AuthTemplate {
   static #getSigninTemplate() {
     const template = `<div id="signin">
@@ -57,5 +59,6 @@ export class AuthTemplate {
   static getAuthTemplate(template) {
     if (template == "signin") return this.#getSigninTemplate();
     else if (template == "signup") return this.#getSignupTemplate();
+    else if (template == "cart") return CartTemplate.getCartTemplate();
   }
 }

@@ -31,7 +31,7 @@ export class Product {
   }
   static async getById(id) {
     const response = await fetch(this.#api + id);
-    return response.json();
+    return await response.json();
   }
   static async getByCategory(category) {
     if (!this.#categories.includes(category))

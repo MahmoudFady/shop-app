@@ -1,7 +1,7 @@
 const syncEmailValidation = function () {
   const emailInputs = document.querySelectorAll("input[type='email']");
   const mailRegEx = new RegExp(
-    /^([a-zA-Z]){1,10}[0-9]{0,5}@(gmail|yahoo)(\.com)$/
+    /^([a-zA-Z]){1,20}[0-9]{0,5}@(gmail|yahoo)(\.com)$/
   );
 
   for (let i = 0; i < emailInputs.length; i++) {
@@ -71,7 +71,7 @@ const asyncPasswordValidation = function () {
 };
 const isValidEmail = (email) => {
   const mailRegEx = new RegExp(
-    /^([a-zA-Z]){1,10}[0-9]{0,5}@(gmail|yahoo)(\.com)$/
+    /^([a-zA-Z]){1,20}[0-9]{0,5}@(gmail|yahoo)(\.com)$/
   );
   return mailRegEx.test(email);
 };
