@@ -20,10 +20,9 @@ export class CartTemplate {
       const product = await Product.getById(products[i].id);
       _products.push(product);
     }
-    console.log("_products : " + _products);
     for (let i in _products) {
       cartTemplate += `
-        <tr>
+        <tr class=cart${_products[i].id}>
           <td>
             <img
               src=${_products[i].thumbnail}

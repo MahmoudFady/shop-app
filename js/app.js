@@ -162,7 +162,7 @@ for (let i = 0; i < authNavs.length; i++) {
           }
           const id = this.getAttribute("id");
           Cart.deleteProduct(id);
-          this.parentElement.parentElement.parentElement.style.display = "none";
+          document.querySelector(`tr.cart${id}`).style.display = "none";
         };
       }
     }
